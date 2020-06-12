@@ -49,12 +49,21 @@ app.post('/api/product', (req,res)=>{
     })
 })
 
-app.put('api/prodcut/:productId', (req,res)=>{
+app.put('/api/prodcut/:productId', (req,res)=>{
 
 })
 
-app.delete('api/product/:productId', (req,res)=>{
+app.delete('/api/product/:productId', (req,res)=>{
+    let productId = req.params.productId
 
+    Product.findById(productId, (err, product)=>{
+        if (err) res.status(500).send({message: `error al borrar el producto: ${err}`})
+
+        product.remove(err =>{
+        if (err) res.status(500).send({message: `error al borrar el producto: ${err}`})
+            res.status(200).send({message: `el producto ha sido eliminado`})
+        })
+    })
 })
 
 mongoose.connect("mongodb://172.19.0.2:27017/shop", (err, res)=>{
