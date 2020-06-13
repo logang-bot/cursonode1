@@ -6,7 +6,7 @@ const userctrl = require('../controllers/user')
 const auth = require('../middlewares/auth')
 const api = express.Router()
 
-api.get('/product', auth, productctrl.getProducts)
+api.get('/product', productctrl.getProducts)
 api.get('/product/:productId', productctrl.getProduct)
 api.post('/product', auth, productctrl.saveProduct)
 api.put('/product/:productId', productctrl.updateProduct)
