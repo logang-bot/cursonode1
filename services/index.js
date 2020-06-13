@@ -33,7 +33,7 @@ function decodeToken (token) {
         }
     })
 
-    return decoded
+    return decode
 }
 module.exports = {
     createToken, 
